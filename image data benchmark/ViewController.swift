@@ -37,22 +37,8 @@ class ViewController: UIViewController {
 		rawImageData = nil
 		guard let image = theImage!.cgImage else { return }
 
-//		let width = Int(image.size.width)
-//		let height = Int(image.size.height)
-//
-//		let bytesPerPixel = image.bitsPerPixel / image.bitsPerComponent
-
 		guard let rawData = image.dataProvider?.data as Data? else { return }
-
 		rawImageData = rawData
-//		for row in 0..<height {
-//			let offsetStart = image.bytesPerRow * row
-//			for xOffset in 0..<width {
-//				let pixelOffset = offsetStart + (xOffset + bytesPerPixel)
-//				guard pixelOffset < rawData.count else { break }
-//
-//			}
-//		}
 	}
 
 	func benchmark2() {
@@ -64,7 +50,6 @@ class ViewController: UIViewController {
 		guard let context = UIGraphicsGetCurrentContext() else { print("No graphics context"); return }
 		context.draw(image, in: CGRect(origin: .zero, size: size))
 
-//		let width = Int(size.width)
 		let height = Int(size.height)
 
 		guard let data1 = context.data?.assumingMemoryBound(to: UInt8.self) else { print("No data"); return }
